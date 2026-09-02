@@ -177,11 +177,18 @@ function shadow_digest_render_colophon(): string {
 
 	$podcast_url   = '';
 	$podcast_label = __( 'Podcast', 'broadside-blocks' );
+	$youtube_url   = '';
+	$youtube_label = __( 'YouTube', 'broadside-blocks' );
 	if ( function_exists( 'shadow_digest_get' ) ) {
 		$podcast_url = (string) shadow_digest_get( 'shadow_digest_podcast_directory_url' );
 		$label_mod   = (string) shadow_digest_get( 'shadow_digest_podcast_directory_label' );
 		if ( '' !== $label_mod ) {
 			$podcast_label = $label_mod;
+		}
+		$youtube_url = (string) shadow_digest_get( 'shadow_digest_youtube_url' );
+		$yt_label_mod = (string) shadow_digest_get( 'shadow_digest_youtube_label' );
+		if ( '' !== $yt_label_mod ) {
+			$youtube_label = $yt_label_mod;
 		}
 	}
 
@@ -226,6 +233,17 @@ function shadow_digest_render_colophon(): string {
 				target="_blank"
 				rel="noopener noreferrer"
 			><?php echo esc_html( $podcast_label ); ?></a>
+		</span>
+		<?php endif; ?>
+
+		<?php if ( $youtube_url ) : ?>
+		<span class="digest-footer__youtube">
+			<a
+				class="digest-footer__youtube-link"
+				href="<?php echo esc_url( $youtube_url ); ?>"
+				target="_blank"
+				rel="noopener noreferrer"
+			><?php echo esc_html( $youtube_label ); ?></a>
 		</span>
 		<?php endif; ?>
 

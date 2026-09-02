@@ -171,6 +171,21 @@ function shadow_digest_schema_publisher(): array {
 		}
 	}
 
+	$same_as = array();
+	if ( function_exists( 'shadow_digest_get' ) ) {
+		$youtube_url = (string) shadow_digest_get( 'shadow_digest_youtube_url' );
+		if ( '' !== $youtube_url ) {
+			$same_as[] = $youtube_url;
+		}
+		$podcast_url = (string) shadow_digest_get( 'shadow_digest_podcast_directory_url' );
+		if ( '' !== $podcast_url ) {
+			$same_as[] = $podcast_url;
+		}
+	}
+	if ( ! empty( $same_as ) ) {
+		$node['sameAs'] = array_values( array_unique( $same_as ) );
+	}
+
 	return $node;
 }
 

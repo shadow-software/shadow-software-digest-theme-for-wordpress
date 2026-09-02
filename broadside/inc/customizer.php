@@ -534,6 +534,25 @@ function shadow_digest_settings(): array {
 			'transport' => 'postMessage',
 		),
 
+		'shadow_digest_youtube_url'   => array(
+			'default'  => '',
+			'sanitize' => 'esc_url_raw',
+			'type'     => 'url',
+			'section'  => 'shadow_digest_podcast',
+			'label'    => __( 'YouTube channel URL', 'broadside' ),
+			'help'     => __( 'Official YouTube channel for podcast videos. Shown in the footer; opens in a new tab. Leave empty to hide.', 'broadside' ),
+		),
+
+		'shadow_digest_youtube_label' => array(
+			'default'   => __( 'YouTube', 'broadside' ),
+			'sanitize'  => 'sanitize_text_field',
+			'type'      => 'text',
+			'section'   => 'shadow_digest_podcast',
+			'label'     => __( 'YouTube link label', 'broadside' ),
+			'help'      => __( 'Footer label for the YouTube channel URL.', 'broadside' ),
+			'transport' => 'postMessage',
+		),
+
 		/*
 		 * ----------------------------------------------------------------
 		 * Article furniture.
